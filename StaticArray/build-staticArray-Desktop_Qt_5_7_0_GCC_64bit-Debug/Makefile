@@ -181,6 +181,7 @@ DIST          = /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		../staticArray/.qmake.stash \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -192,7 +193,7 @@ DIST          = /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/exceptions.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/yacc.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/lex.prf \
-		../staticArray/staticArray.pro  ../staticArray/main.cpp
+		../staticArray/staticArray.pro staticarray.h ../staticArray/main.cpp
 QMAKE_TARGET  = staticArray
 DESTDIR       = 
 TARGET        = staticArray
@@ -335,6 +336,7 @@ Makefile: ../staticArray/staticArray.pro /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		/home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -479,6 +481,7 @@ Makefile: ../staticArray/staticArray.pro /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs
 /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/qt_config.prf:
 /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf:
 /home/bogdan/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf:
@@ -534,7 +537,7 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../staticArray/main.cpp 
+main.o: ../staticArray/main.cpp ../staticArray/staticarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../staticArray/main.cpp
 
 ####### Install
