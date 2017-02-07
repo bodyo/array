@@ -2,12 +2,62 @@
 #define STATICARRAY_H
 #include <cassert>
 
+template<class data_type>
+class iterator
+{
+  friend class Sarr;
+public:
+  iterator() :elem{nullptr} {}
+  iterator(data_type &a): elem{a} {}
+  iterator(const iterator &iter): elem{iter.elem} {}
+  bool operator== (const iterator& iter) const
+  {
+	return elem == iter.elem;
+  }
+  bool operator!=(const iterator& iter) const
+  {
+	return elem != iter.elem;
+  }
+  iterator& operator++()
+  {
+	if(elem != nullptr)
+	  return ++elem;
+  }
+  iterator& operator--()
+  {
+	if(elem != nullptr)
+	  return --elem;
+  }
+
+
+private:
+  data_type *elem;
+};
+
+
 template<class data_type, size_t cap = 5>
 class Sarr
 {
   data_type data[cap];
+  iterator<data_type> *beg;
+  iterator<data_type> *en;
 public:
-  Sarr() = default;
+  friend class iterator<data_type>;
+  iterator<data_type>& begin()
+  {
+	return beg;
+  }
+  iterator<data_type>& end()
+  {
+	return en;
+  }
+  ~Sarr()
+  {
+	delete beg;
+	delete en;
+  }
+
+  Sarr() : beg(&data[0]), en(&data[cap]) {};
   explicit Sarr(const Sarr& arr)
   {
 	for(size_t i = 0; i < cap; ++i)
@@ -25,7 +75,7 @@ public:
 	return *this;
   }
   Sarr& operator =(const data_type& a)=delete;
-  inline size_t size() const
+  constexpr inline size_t size() const
   {
 	return cap;
   }
