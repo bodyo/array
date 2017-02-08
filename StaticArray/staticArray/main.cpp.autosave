@@ -9,7 +9,6 @@ int main()
   Sarr<int> r;
   for(Sarr<int>::const_iterator i = a.begin(); i != a.end(); i++)
   {
-	*i = 3;
 	cout << *i;
   }
   r=a;
